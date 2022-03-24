@@ -1,5 +1,3 @@
-"""Flask App Project."""
-
 from flask import Flask, jsonify, request
 
 from squid import get_latest_table, map_table
