@@ -11,7 +11,7 @@ def get_recap_table(timing_map):
     for model_name, model_times in timing_map.items():
         model_line = [model_name,]
         for t in times:
-            model_line.append(model_times["avail_times"].get(t))
+            model_line.append(model_times["avail_times"].get(t, ""))
         result.append(model_line)
 
     return result

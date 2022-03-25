@@ -15,8 +15,7 @@ def models():
     return jsonify(model_names)
 
 
-@app.route('/', methods=['POST', 'GET'])
-def index():
+def get_data():
     table = get_latest_table()
     timing_map = map_table(table)
 
@@ -35,7 +34,46 @@ def index():
 
     recap_table = get_recap_table(timing_map)
 
+    return timing_map, recap_table
+
+
+def build_html(recap_table):
+    header = ""
+    table_body = ""
+    for i, row in enumerate(recap_table):
+        if i == 0:
+            header = "<tr><th>" + "</th><th>".join(row) + "</th></tr>"
+        else:
+            table_body += "<tr><td>" + "</td><td>".join(row) + "</td></tr>"
+
+    html_table = f"<table><thead>{header}</thead><tbody>{table_body}</tbody></table>"
+
+    return f"""
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Models Availability</title>
+</head>
+<body>
+    {html_table}    
+</body>
+</html>
+    """
+
+
+@app.route('/', methods=['POST', 'GET'])
+def index():
+    timing_map, recap_table = get_data()
     return jsonify({"timing_details": timing_map, "recap_table": recap_table})
+
+
+@app.route('/html', methods=['POST', 'GET'])
+def html():
+    timing_map, recap_table = get_data()
+
+    html_result = build_html(recap_table)
+    return html_result
 
 
 if __name__ == '__main__':
