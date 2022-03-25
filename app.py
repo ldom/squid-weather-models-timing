@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 
+from recap import get_recap_table
 from squid import get_latest_table, map_table
 
 
@@ -24,7 +25,9 @@ def index():
     except:
         pass
 
-    return jsonify(timing_map)
+    recap_table = get_recap_table(timing_map)
+
+    return jsonify({"timing_details": timing_map, "recap_table": recap_table})
 
 
 if __name__ == '__main__':
