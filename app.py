@@ -7,6 +7,14 @@ from squid import get_latest_table, map_table
 app = Flask(__name__)
 
 
+@app.route('/models')
+def models():
+    table = get_latest_table()
+    timing_map = map_table(table)
+    model_names = list(timing_map.keys())
+    return jsonify(model_names)
+
+
 @app.route('/', methods=['POST', 'GET'])
 def index():
     table = get_latest_table()
