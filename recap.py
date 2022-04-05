@@ -6,7 +6,7 @@ def get_times(timing_map):
 
 def get_recap_table(timing_map):
     times = get_times(timing_map)
-    result = [["model/availability time", *times],]
+    result = [["Model / Availability Time", *times],]
 
     for model_name, model_times in timing_map.items():
         model_line = [model_name,]

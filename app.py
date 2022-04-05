@@ -109,7 +109,6 @@ def build_html(recap_table):
   }}
   body {{
     font-family: "arial";
-    font-size: small;
     text-align: center;
   }}
   table {{
@@ -118,6 +117,9 @@ def build_html(recap_table):
     border-spacing: 0;
     -webkit-border-horizontal-spacing: 0;
     -webkit-border-vertical-spacing: 0;
+  }}
+  th, td {{
+    padding: 10px;
   }}
   td {{ 
     border-top: 1px solid #666;
