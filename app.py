@@ -60,7 +60,7 @@ def build_model_form(models):
     model_list = "\n".join([f"<input type='checkbox' name='{normalized_model_name(m)}'></input><label for='{normalized_model_name(m)}'>{m}</label><br />" for m in models])
 
     form = f"<form id='models' action'/html' method='POST' enctype='application/x-www-form-urlencoded'>{model_list}" \
-           f"<button type='submit' form='models' value='view' formaction='/html'>View</button>" \
+           f"<button type='submit' form='models' value='view' formaction='/html'>View/Voir</button>" \
            f"</form>"
 
     return f"""
@@ -77,6 +77,7 @@ def build_model_form(models):
       </style>
     </head>
     <body>
+        <div>Select the models your wish to use - Sélectionnez les modèles que vous voulez utiliser :</div>
         {form}    
     </body>
     </html>
@@ -90,7 +91,7 @@ def build_html(recap_table):
         if i == 0:
             header = "<tr><th>" + "</th><th>".join(row) + "</th></tr>"
         else:
-            table_body += "<tr><td>" + "</td><td>".join(row) + "</td></tr>"
+            table_body += "<tr><td class='model'>" + "</td><td>".join(row) + "</td></tr>"
 
     html_table = f"<table><thead>{header}</thead><tbody>{table_body}</tbody></table>"
 
@@ -121,6 +122,9 @@ def build_html(recap_table):
   td {{ 
     border-top: 1px solid #666;
     border-right: 1px dotted #666;
+  }}
+  td.model {{ 
+    text-align: right;
   }}
   tr:nth-child(even) {{background: #CCC}}
   tr:nth-child(odd) {{background: #FFF}}
