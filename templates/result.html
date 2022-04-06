@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Models Availability</title>
+  <style>
+  th {
+    background-color: #333;
+    color: #eee;
+    padding: 3px;
+  }
+  body {
+    font-family: "arial";
+    text-align: center;
+  }
+  table {
+    display: table;
+    border: 1px solid #333;
+    border-spacing: 0;
+    -webkit-border-horizontal-spacing: 0;
+    -webkit-border-vertical-spacing: 0;
+  }
+  th, td {
+    padding: 10px;
+  }
+  td {
+    border-top: 1px solid #666;
+    border-right: 1px dotted #666;
+  }
+  td.model {
+    text-align: right;
+  }
+  tr:nth-child(even) {background: #CCC}
+  tr:nth-child(odd) {background: #FFF}
+  </style>
+</head>
+<body>
+    {{ html_table|safe }}
+</body>
+</html>

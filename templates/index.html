@@ -1,0 +1,33 @@
+<!doctype html>
+    <html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Models Availability</title>
+        <style>
+            body {
+                font-family: "arial";
+                font-size: small;
+            }
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .item {
+                width: 350px;
+            }
+            .buttons, .container {
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>Select the models your wish to use - Sélectionnez les modèles que vous voulez utiliser :</div>
+
+        <form id='models' action="/" method="POST" enctype="application/x-www-form-urlencoded">
+            {{ model_form|safe }}
+            <div class="buttons">
+                <button type="submit" form="models" value="view">View/Voir</button>
+            </div>
+        </form>
+    </body>
+    </html>
