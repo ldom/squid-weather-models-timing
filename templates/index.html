@@ -15,17 +15,28 @@
             .item {
                 width: 350px;
             }
-            .buttons, .container {
+            .block, .container {
                 margin-top: 20px;
             }
         </style>
     </head>
     <body>
-        <div>Select the models your wish to use - Sélectionnez les modèles que vous voulez utiliser :</div>
+        <div class="block">
+            <h3>Squid (Great Circle) - Weather Models Availability Times - Heures de disponibilité des modèles météo</h3>
+
+            Cet outil présente la disponibilité des modèles météo au cours de la journée plutôt que selon l'heure des données du modèle.<br />
+            This tool presents the weather models availability times across the day, rather than per model data time.<br />
+        </div>
+        <div class="block">
+            Source data = <a href="https://www.squid-sailing.com/en/content/12-runtimes-24h">www.squid-sailing.com/en/content/12-runtimes-24h</a><br />
+            Source code = <a href="https://github.com/ldom/squid-weather-models-timing">github.com/ldom/squid-weather-models-timing</a><br />
+        </div>
+
+        <div class="block">Select the models your wish to use - Sélectionnez les modèles que vous voulez utiliser :</div>
 
         <form id='models' action="/" method="POST" enctype="application/x-www-form-urlencoded">
             {{ model_form|safe }}
-            <div class="buttons">
+            <div class="block">
                 <button type="submit" form="models" value="view">View/Voir</button>
             </div>
         </form>
