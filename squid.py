@@ -1,12 +1,20 @@
 from bs4 import BeautifulSoup, Tag
 import requests
 
+from cache import get_from_cache, save_to_cache
 
 SQUID_URL = "https://www.squid-sailing.com/runtimes/runtimes-24h.php"
 
+
 def get_latest_table():
-    r = requests.get(SQUID_URL)
-    soup = BeautifulSoup(r.text, 'html.parser')
+    if cached := get_from_cache():
+        text = cached
+    else:
+        r = requests.get(SQUID_URL)
+        text = r.text
+        save_to_cache(text)
+
+    soup = BeautifulSoup(text, 'html.parser')
     return soup.table
 
 
